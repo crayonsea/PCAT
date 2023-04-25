@@ -1,0 +1,10 @@
+cx_Freeze==6.9
+cx_Freeze==6.14.9
+numpy==1.21.6
+pptk==0.1.0
+PyQt5==5.15.9
+PyQt5_sip==12.9.0
+pywin32==227
+pywin32==306
+scipy==1.7.3
+tqdm==4.65.0

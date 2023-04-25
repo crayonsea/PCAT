@@ -1,0 +1,152 @@
+{
+    "0": {
+        "label": "unknown",
+        "label_cn": "未标注",
+        "color": "#000000"
+    },
+    "1": {
+        "label": "road",
+        "label_cn": "道路",
+        "color": "#ff0000"
+    },
+    "2": {
+        "label": "green",
+        "label_cn": "绿地",
+        "color": "#6496f5"
+    },
+    "3": {
+        "label": "vegetation",
+        "label_cn": "植被",
+        "color": "#64e6f5"
+    },
+    "4": {
+        "label": "tree",
+        "label_cn": "树",
+        "color": "#1e3c96"
+    },
+    "5": {
+        "label": "person",
+        "label_cn": "人",
+        "color": "#0000ff"
+    },
+    "6": {
+        "label": "bicycle",
+        "label_cn": "自行车",
+        "color": "#6450fa"
+    },
+    "7": {
+        "label": "electric_bicycle",
+        "label_cn": "电动自行车",
+        "color": "#501eb4"
+    },
+    "8": {
+        "label": "car",
+        "label_cn": "汽车",
+        "color": "#0000ff"
+    },
+    "9": {
+        "label": "floor",
+        "label_cn": "地板",
+        "color": "#ff1e1e"
+    },
+    "10": {
+        "label": "stairs",
+        "label_cn": "楼梯",
+        "color": "#ff28c8"
+    },
+    "11": {
+        "label": "ceiling",
+        "label_cn": "天花板",
+        "color": "#963c5a"
+    },
+    "12": {
+        "label": "pipe",
+        "label_cn": "管道",
+        "color": "#ff00ff"
+    },
+    "13": {
+        "label": "wall",
+        "label_cn": "墙",
+        "color": "#ff96ff"
+    },
+    "14": {
+        "label": "column",
+        "label_cn": "柱子",
+        "color": "#4b004b"
+    },
+    "15": {
+        "label": "window",
+        "label_cn": "窗户",
+        "color": "#af004b"
+    },
+    "16": {
+        "label": "curtain",
+        "label_cn": "窗帘",
+        "color": "#ffc800"
+    },
+    "17": {
+        "label": "door",
+        "label_cn": "门",
+        "color": "#ff7832"
+    },
+    "18": {
+        "label": "desk",
+        "label_cn": "桌子",
+        "color": "#ff9600"
+    },
+    "19": {
+        "label": "chair",
+        "label_cn": "椅子",
+        "color": "#96ffaa"
+    },
+    "20": {
+        "label": "sofa",
+        "label_cn": "沙发",
+        "color": "#00af00"
+    },
+    "21": {
+        "label": "blackboard",
+        "label_cn": "黑板",
+        "color": "#873c00"
+    },
+    "22": {
+        "label": "monitor",
+        "label_cn": "显示器",
+        "color": "#96f050"
+    },
+    "23": {
+        "label": "bookshelf",
+        "label_cn": "书架",
+        "color": "#fff096"
+    },
+    "24": {
+        "label": "wardrobe",
+        "label_cn": "衣柜",
+        "color": "#ff0000"
+    },
+    "25": {
+        "label": "bed",
+        "label_cn": "床",
+        "color": "#32ffff"
+    },
+    "26": {
+        "label": "reflection_noise",
+        "label_cn": "反射噪点",
+        "color": "#808000"
+    },
+    "27": {
+        "label": "ghosting",
+        "label_cn": "移动鬼影",
+        "color": "#ee82ee"
+    },
+    "28": {
+        "label": "pseudo_scene",
+        "label_cn": "伪场景",
+        "color": "#ffa500"
+    },
+    "29": {
+        "label": "light",
+        "label_cn": "灯",
+        "color": "#a52a2a"
+    }
+}

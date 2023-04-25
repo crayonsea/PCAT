@@ -1,0 +1,10 @@
+.vscode
+backup
+build
+dist
+lib
+
+__pycache__
+build
+
+*.bin
