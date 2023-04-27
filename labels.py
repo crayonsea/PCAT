@@ -25,9 +25,10 @@ labels_dict_pack = {
 # print(class_colors)
 
 ui_groups = {
-    'indoor': [],
-    'outdoor': [],
-    'others': [],
+    'unlabel': [0],
+    'indoor': [1, 2, 3, 4, 5, 6, 7, 8],
+    'outdoor': [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 29],
+    'others': [26, 27, 28],
 }
 
 
