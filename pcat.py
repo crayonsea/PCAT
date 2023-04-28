@@ -248,16 +248,31 @@ class MainWindow(QtWidgets.QMainWindow):
     # key event
     
     def keyPressEvent(self, event):
-        print(event.text(), event)
+        # print(event.text(), event)
+        print(event.text())
         # view
         if event.text() == 'q':
-            win32api.SendMessage(self.viewer.hwnd, win32con.WM_KEYDOWN, 0x31, 0)
+            worker = Worker(self.viewer.set_camera, 'top')
+            self.threadpool.start(worker)
         elif event.text() == 'w':
-            win32api.SendMessage(self.viewer.hwnd, win32con.WM_KEYDOWN, 0x33, 0)
+            worker = Worker(self.viewer.set_camera, 'front')
+            self.threadpool.start(worker)
         elif event.text() == 'e':
-            win32api.SendMessage(self.viewer.hwnd, win32con.WM_KEYDOWN, 0x37, 0)
+            worker = Worker(self.viewer.set_camera, 'bottom')
+            self.threadpool.start(worker)
+        elif event.text() == 'a':
+            worker = Worker(self.viewer.set_camera, 'left')
+            self.threadpool.start(worker)
+        elif event.text() == 's':
+            worker = Worker(self.viewer.set_camera, 'back')
+            self.threadpool.start(worker)
+        elif event.text() == 'd':
+            worker = Worker(self.viewer.set_camera, 'right')
+            self.threadpool.start(worker)
         elif event.text() == 'r':
             win32api.SendMessage(self.viewer.hwnd, win32con.WM_KEYDOWN, 0x35, 0)
+        elif event.text() == 'c':
+            win32api.SendMessage(self.viewer.hwnd, win32con.WM_KEYDOWN, 0x43, 0)
         # attrs
         elif event.text() == '[':
             win32api.SendMessage(self.viewer.hwnd, win32con.WM_KEYDOWN, 0xDB, 0)

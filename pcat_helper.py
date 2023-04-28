@@ -1,3 +1,4 @@
+from math import pi
 import numpy as np
 import file_utils
 import pptk
@@ -97,6 +98,22 @@ class AnnotateViewerHelpler:
         print('labels saved:', labels.shape)
     
     # action
+    
+    def set_camera(self, direction):
+        if direction == 'front':
+            self.viewer.set(theta=0, phi=0)
+        elif direction == 'back':
+            self.viewer.set(theta=0, phi=pi)
+        elif direction == 'top':
+            self.viewer.set(theta=pi/2, phi=0)
+        elif direction == 'bottom':
+            self.viewer.set(theta=-pi/2, phi=0)
+        elif direction == 'left':
+            self.viewer.set(theta=0, phi=-pi/2)
+        elif direction == 'right':
+            self.viewer.set(theta=0, phi=pi/2)
+        else:
+            return
     
     def render(self, mask, label_type='sem'):
         mask = self.focus_stack[-1] if mask is None else mask
