@@ -248,8 +248,7 @@ class MainWindow(QtWidgets.QMainWindow):
     # key event
     
     def keyPressEvent(self, event):
-        print(event)
-        print(event.text())
+        print(event.text(), event)
         # view
         if event.text() == 'q':
             win32api.SendMessage(self.viewer.hwnd, win32con.WM_KEYDOWN, 0x31, 0)
@@ -266,9 +265,9 @@ class MainWindow(QtWidgets.QMainWindow):
             win32api.SendMessage(self.viewer.hwnd, win32con.WM_KEYDOWN, 0xDD, 0)
         # todo
         elif event.text() == ',' or event.text() == '<':
-            pass
+            win32api.mouse_event(win32con.MOUSEEVENTF_WHEEL, 0, 0, -120, 0)
         elif event.text() == '.' or event.text() == '>':
-            pass
+            win32api.mouse_event(win32con.MOUSEEVENTF_WHEEL, 0, 0, 120, 0)
         else:
             pass
         return
