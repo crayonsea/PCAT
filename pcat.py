@@ -78,12 +78,22 @@ class MainWindow(QtWidgets.QMainWindow):
         s.listen(0)
         # process
         self._viewer_process = QProcess()
-        self._viewer_process.readyRead.connect(self.bindViewerProcessContainer)
-        self._viewer_process.start(os.path.join(_viewer_dir, 'viewer'), [str(s.getsockname()[1])])
-        # client port
-        self._viewer_port = s.accept()[-1][-1]
+        self._viewer_process.readyReadStandardOutput.connect(self.bindViewerProcessContainer)
+        res1 = s.getsockname()
+        self._viewer_process.start(os.path.join(_viewer_dir, 'viewer'), [str(res1[1])])
+        # self._viewer_port = s.accept()[-1][-1]
+        res2 = s.accept()
+        print('client port:', res2[-1][-1])
+        # self._viewer_port = res2[-1][-1]
 
     def bindViewerProcessContainer(self):
+        # pptk viewer port
+        import struct
+        data = self._viewer_process.readAllStandardOutput().data()
+        port = struct.unpack('H', data)
+        self._viewer_port = int(port[0])
+        print('viewer port:', self._viewer_port)
+        # pptk viewer hwnd
         hwnd = win32gui.FindWindowEx(0, 0, None, "viewer")
         win32gui.ShowWindow(hwnd, win32con.SW_MAXIMIZE)
         window = QtGui.QWindow.fromWinId(hwnd)

@@ -5,7 +5,7 @@ import pptk
 
 class AnnotateViewer(pptk.viewer):
     def __init__(self, port):
-        self._portNumber = port - 1
+        self._portNumber = port
         self._process = None
 
 
