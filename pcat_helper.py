@@ -56,10 +56,15 @@ class AnnotateViewerHelpler:
         sem_label_points = np.bincount(self.sem_labels)
         sem_label_points = np.pad(sem_label_points, (0, len(self.color_map) - len(sem_label_points)), 'constant', constant_values=0)
         
-        ins_label_counts = sem_label_points.copy()
+        ins_label_counts = [''] * len(sem_label_points)
         for i in range(len(ins_label_counts)):
-            if ins_label_counts[i] != 0:
-                ins_label_counts[i] = len(np.unique(self.ins_labels[self.sem_labels == i])) - 1
+            cur_sem_ins = self.ins_labels[self.sem_labels == i]
+            nonzero_cnt = len(np.unique(cur_sem_ins[cur_sem_ins != 0]))
+            unanno_cnt = (cur_sem_ins == 0).sum()
+            if len(cur_sem_ins) == 0:
+                ins_label_counts[i] = ''
+            else:
+                ins_label_counts[i] = f'{nonzero_cnt} <{unanno_cnt}>'
         
         return sem_label_points, ins_label_counts
     

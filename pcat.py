@@ -54,6 +54,8 @@ class MainWindow(QtWidgets.QMainWindow):
     
     # data model
     def update_data_model(self, info):
+        if info is None:
+            return
         counts = info[self.ins_AnnoMode]
         for cnt, btn in zip(counts, self.ins_anno_btn):
             btn : QPushButton
