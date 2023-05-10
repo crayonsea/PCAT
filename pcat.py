@@ -245,6 +245,16 @@ class MainWindow(QtWidgets.QMainWindow):
         
         return sidebar_layout
     
+    # mouse event
+    def wheelEvent(self,event):
+        sroll=event.angleDelta()
+        if(sroll.y()>0):
+            win32api.SendMessage(
+                self.viewer.hwnd, win32con.WM_MOUSEWHEEL, 120 << 16, 0)
+        else :
+            win32api.SendMessage(self.viewer.hwnd,win32con.WM_MOUSEWHEEL,-120<<16,0)
+        return 
+
     # key event
     
     def keyPressEvent(self, event):
@@ -280,9 +290,11 @@ class MainWindow(QtWidgets.QMainWindow):
             win32api.SendMessage(self.viewer.hwnd, win32con.WM_KEYDOWN, 0xDD, 0)
         # todo
         elif event.text() == ',' or event.text() == '<':
-            win32api.mouse_event(win32con.MOUSEEVENTF_WHEEL, 0, 0, -120, 0)
+            win32api.SendMessage(
+                self.viewer.hwnd, win32con.WM_MOUSEWHEEL, -120 << 16, 0)
         elif event.text() == '.' or event.text() == '>':
-            win32api.mouse_event(win32con.MOUSEEVENTF_WHEEL, 0, 0, 120, 0)
+            win32api.SendMessage(
+                self.viewer.hwnd, win32con.WM_MOUSEWHEEL, 120 << 16, 0)
         else:
             pass
         return
