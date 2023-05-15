@@ -148,5 +148,10 @@
         "label": "light",
         "label_cn": "灯",
         "color": "#a52a2a"
+    },
+    "30": {
+        "label": "undefined_desktop",
+        "label_cn": "桌面其它",
+        "color": "#6141A7"
     }
 }
