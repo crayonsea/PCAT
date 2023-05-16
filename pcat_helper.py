@@ -84,10 +84,16 @@ class AnnotateViewerHelpler:
         print('labels load', labels.shape)
         sem_labels = labels[0]
         ins_labels = labels[1]
+        print('sem:', sem_labels.shape, self.sem_labels.shape)
+        print('ins:', ins_labels.shape, self.ins_labels.shape)
         if sem_labels.shape == self.sem_labels.shape and ins_labels.shape == self.ins_labels.shape:
             self.sem_labels = sem_labels
             self.ins_labels = ins_labels
-            self.viewer.attributes(self.colors, self.cur_labels)
+            if len(self.focus_stack) == 1:
+                self.viewer.attributes(self.colors, self.cur_labels)
+            else:
+                cur_focus_mask = self.focus_stack[-1]
+                self.render(cur_focus_mask)
         else:
             print('点云与标签 shape 不一致')
         return self.get_labels_info()
