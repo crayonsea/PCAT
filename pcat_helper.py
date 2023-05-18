@@ -29,6 +29,20 @@ class AnnotateViewerHelpler:
         else:
             return self.ins_labels
     
+    @property
+    def cur_scale(self):
+        if self._anno_mode == 'sem':
+            return self._sem_scale
+        else:
+            return self._ins_scale
+    
+    @property
+    def cur_color_map(self):
+        if self._anno_mode == 'sem':
+            return self._sem_color_map
+        else:
+            return self._ins_color_map
+    
     def set_anno_mode(self, value):
         self._anno_mode = str(value)
 
@@ -45,17 +59,25 @@ class AnnotateViewerHelpler:
         # focus
         self.focus_stack = [np.arange(points.shape[0])]
         return
+    
+    def set_sem_color_map(self, color_map='jet', scale=None):
+        self._sem_color_map = color_map
+        self._sem_scale = scale
+        
+    def set_ins_color_map(self, color_map='jet', scale=None):
+        self._ins_color_map = color_map
+        self._ins_scale = scale
 
-    def set_color_map(self, color_map=None, scale=None):
-        self.color_map = color_map
-        self.scale = scale
-        self.viewer.color_map(color_map, scale)
+    # def set_color_map(self, color_map='jet', scale=None):
+    #     self.color_map = color_map
+    #     self.scale = scale
+    #     self.viewer.color_map(color_map, scale)
     
     # pack data
     
     def get_labels_info(self):
         sem_label_points = np.bincount(self.sem_labels)
-        sem_label_points = np.pad(sem_label_points, (0, len(self.color_map) - len(sem_label_points)), 'constant', constant_values=0)
+        sem_label_points = np.pad(sem_label_points, (0, len(self._sem_color_map) - len(sem_label_points)), 'constant', constant_values=0)
         
         ins_label_counts = [''] * len(sem_label_points)
         for i in range(len(ins_label_counts)):
@@ -76,7 +98,7 @@ class AnnotateViewerHelpler:
         self.setup(points, colors)
         self.viewer.clear()
         self.viewer.reset()
-        self.viewer.load(points, colors, self.cur_labels, color_map=self.color_map, scale=self.scale)
+        self.viewer.load(points, colors, self.cur_labels, color_map=self.cur_color_map, scale=self.cur_scale)
         return self.get_labels_info()
     
     def load_labels(self, filepath):
@@ -129,7 +151,7 @@ class AnnotateViewerHelpler:
         # p = get_perspective()
         self.viewer.clear()
         self.viewer.reset()
-        self.viewer.load(points, colors, cur_labels, color_map=self.color_map, scale=self.scale)
+        self.viewer.load(points, colors, cur_labels, color_map=self.cur_color_map, scale=self.cur_scale)
         # set_perspective(p)
         return self.get_labels_info()
     

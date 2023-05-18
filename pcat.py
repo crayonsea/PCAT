@@ -108,7 +108,8 @@ class MainWindow(QtWidgets.QMainWindow):
         self.widget.setFocus()
         # manage viewer
         self.viewer = AnnotateViewerHelpler(self._viewer_port, self._viewer_hwnd)
-        self.viewer.set_color_map(labels_dict_pack['color_rgb'], [0, len(labels_dict_pack['color_rgb']) - 1])
+        self.viewer.set_sem_color_map(color_map=labels_dict_pack['color_rgb'], scale=[0, len(labels_dict_pack['color_rgb']) - 1])
+        self.viewer.set_ins_color_map(color_map='jet', scale=None)
     
     def closeProcess(self, kill=True):
         if self._viewer_process:
